@@ -32,7 +32,6 @@ class _MyAppState extends State<MyApp> {
       // setState((){
       //   List<Contact> name = contacts;
       // });
-
     } else if (status.isDenied) {
       print('거절됨');
       Permission.contacts.request();
@@ -97,7 +96,7 @@ class DialogUI extends StatelessWidget {
   var addName;
   var inputData = TextEditingController();
   var inputData2 = TextEditingController();
-  // var inputData3 = TextEditingController();
+  var inputData3 = TextEditingController();
   TextEditingController phoneController = new TextEditingController(text: "");
   List<Item> phones = [];
 
@@ -116,10 +115,10 @@ class DialogUI extends StatelessWidget {
             decoration: InputDecoration(hintText: 'Last Name'),
             controller: inputData2,
           ),
-          // TextField(
-          //   decoration: InputDecoration(hintText: 'Phone Number'),
-          //   controller: phoneController,
-          // ),
+          TextField(
+            decoration: InputDecoration(hintText: 'Phone Number'),
+            controller: inputData3,
+          ),
         ]),
       actions: [
         FlatButton(
@@ -135,7 +134,7 @@ class DialogUI extends StatelessWidget {
             var newContact = Contact();
             newContact.givenName = inputData.text;
             newContact.familyName = inputData2.text;
-            // newContact.phones = phoneController as List<Item>?;
+            newContact.phones = [Item(value: inputData3.text)];
             ContactsService.addContact(newContact);
             addName(newContact);
             Navigator.pop(context, true);
