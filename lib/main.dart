@@ -65,7 +65,9 @@ class _MyAppState extends State<MyApp> {
               context: context, builder: (context){
               return DialogUI( addOne : addOne, addName : addName );
               });
-            }),
+            },
+            child: const Icon(Icons.add),
+        ),
 
 
         appBar: AppBar(
@@ -95,7 +97,7 @@ class DialogUI extends StatelessWidget {
   var addName;
   var inputData = TextEditingController();
   var inputData2 = TextEditingController();
-  var inputData3 = TextEditingController();
+  // var inputData3 = TextEditingController();
   TextEditingController phoneController = new TextEditingController(text: "");
   List<Item> phones = [];
 
